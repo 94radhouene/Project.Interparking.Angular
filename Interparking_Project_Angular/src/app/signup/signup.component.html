@@ -1,28 +1,41 @@
 <div class="login-page" [@routerTransition]>
-    <div class="row justify-content-md-center">
-        <div class="col-md-4">
-            <img class="user-avatar" src="assets/images/logo.png" width="150px" />
-            <h1>SB Admin BS4 Angular5</h1>
-            <form role="form">
-                <div class="form-content">
-                    <div class="form-group">
-                        <input type="text" class="form-control input-underline input-lg" id="" placeholder="Full Name">
-                    </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-4">
+                <img class="user-avatar" src="assets/images/logo.png" width="150px" />
+                <h1>SignUP</h1>
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div class="form-content">
+                        <div class="form-group">
+                                    <input type="text" formControlName="NomAdmin" Placeholder="Name" class="form-control input-underline input-lg" [ngClass]="{ 'is-invalid': submitted && f.NomAdmin.errors }" />
+                                    <div *ngIf="submitted && f.NomAdmin.errors" class="invalid-feedback">
+                                        <div *ngIf="f.NomAdmin.errors.required">Name is required</div>
+                                    </div>
+                        </div>
 
-                    <div class="form-group">
-                        <input type="text" class="form-control input-underline input-lg" id="" placeholder="Email">
-                    </div>
+                        <div class="form-group">
+                                    <input type="text" formControlName="WorkInterparking" Placeholder="Work" class="form-control input-underline input-lg" [ngClass]="{ 'is-invalid': submitted && f.WorkInterparking.errors }" />
+                                    <div *ngIf="submitted && f.WorkInterparking.errors" class="invalid-feedback">
+                                        <div *ngIf="f.WorkInterparking.errors.required">Work is required</div>
+                                    </div>
+                        </div>
 
-                    <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Password">
+                        <div class="form-group">
+                                    <input type="password" formControlName="Password" Placeholder="Password" class="form-control input-underline input-lg" [ngClass]="{ 'is-invalid': submitted && f.Password.errors }" />
+                                    <div *ngIf="submitted && f.Password.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Password.errors.required">Password is required</div>
+                                        <div *ngIf="f.Password.errors.minlength">Password must be at least 6 characters</div>
+                                    </div>
+                        </div>
+                        <div class="form-group">
+                                    <button [disabled]="loading" class="btn rounded-btn">Register</button>&nbsp;
+                                    <a class="btn rounded-btn" [routerLink]="['/login']"> Log in </a>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Repeat Password">
-                    </div>
-                </div>
-                <a class="btn rounded-btn" [routerLink]="['/dashboard']"> Register </a>&nbsp;
-                <a class="btn rounded-btn" [routerLink]="['/login']"> Log in </a>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
 </div>
+    
+    
+    
+    
