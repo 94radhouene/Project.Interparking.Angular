@@ -6,24 +6,27 @@
                 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                     <div class="form-content">
                         <div class="form-group">
-                                    <input type="text" formControlName="NomAdmin" Placeholder="Name" class="form-control input-underline input-lg" [ngClass]="{ 'is-invalid': submitted && f.NomAdmin.errors }" />
-                                    <div *ngIf="submitted && f.NomAdmin.errors" class="invalid-feedback">
-                                        <div *ngIf="f.NomAdmin.errors.required">Name is required</div>
+                                    <input type="text" formControlName="nomAdmin" Placeholder="Name" class="form-control input-underline input-lg" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.nomAdmin.errors }" [(ngModel)]='admin.nomAdmin' />
+                                    <div *ngIf="submitted && f.nomAdmin.errors" class="invalid-feedback">
+                                        <div *ngIf="f.nomAdmin.errors.required">Name is required</div>
                                     </div>
                         </div>
 
                         <div class="form-group">
-                                    <input type="text" formControlName="WorkInterparking" Placeholder="Work" class="form-control input-underline input-lg" [ngClass]="{ 'is-invalid': submitted && f.WorkInterparking.errors }" />
-                                    <div *ngIf="submitted && f.WorkInterparking.errors" class="invalid-feedback">
-                                        <div *ngIf="f.WorkInterparking.errors.required">Work is required</div>
+                                    <input type="text" formControlName="workInterparking" Placeholder="Work" class="form-control input-underline input-lg" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.workInterparking.errors }" [(ngModel)]='admin.workInterparking' />
+                                    <div *ngIf="submitted && f.workInterparking.errors" class="invalid-feedback">
+                                        <div *ngIf="f.workInterparking.errors.required">Work is required</div>
                                     </div>
                         </div>
 
                         <div class="form-group">
-                                    <input type="password" formControlName="Password" Placeholder="Password" class="form-control input-underline input-lg" [ngClass]="{ 'is-invalid': submitted && f.Password.errors }" />
-                                    <div *ngIf="submitted && f.Password.errors" class="invalid-feedback">
-                                        <div *ngIf="f.Password.errors.required">Password is required</div>
-                                        <div *ngIf="f.Password.errors.minlength">Password must be at least 6 characters</div>
+                                    <input type="password" formControlName="password" Placeholder="Password" class="form-control input-underline input-lg" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }" [(ngModel)]='admin.password' />
+                                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                        <div *ngIf="f.password.errors.required">Password is required</div>
+                                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
                                     </div>
                         </div>
                         <div class="form-group">

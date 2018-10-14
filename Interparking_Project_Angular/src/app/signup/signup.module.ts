@@ -5,6 +5,8 @@ import { SignupComponent } from './signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupRoutingModule } from './signup-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RegisterAdminService } from './services/register-admin.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -13,7 +15,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule.forRoot(),
     SignupRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   declarations: [SignupComponent]
 })
