@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../router.animations';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegisterAdminService } from './services/register-admin.service';
+import { ToastrService } from 'ngx-toastr';
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-signup',
@@ -22,14 +24,19 @@ export class SignupComponent implements OnInit {
         isSuper: 1
      }
     // Initialize the form
-    constructor(private formBuilder: FormBuilder, public dataService:RegisterAdminService) { }
+    constructor(private formBuilder: FormBuilder, 
+                public dataService:RegisterAdminService, 
+                private toastr: ToastrService,
+                private router: Router) { }
     // Form validate
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
             nomAdmin: ['', Validators.required],
             workInterparking: ['', [Validators.required]],
             password: ['', [Validators.required, Validators.minLength(6)]]
+            
         });
+        
     }
 
     // convenience getter for easy access to form fields
@@ -43,9 +50,21 @@ export class SignupComponent implements OnInit {
             return;
         }
         else{
-            this.dataService.addAdmin(this.admin).subscribe(admin =>{
-            this.admins.push(admin);
-        });
+            this.dataService.addAdmin(this.admin).subscribe(
+                res => {
+                    // Condition 0 : success
+                    if(res.status == 0){
+                        this.toastr.success('Hello!', 'In Interparking!');
+                        this.router.navigate(['/login']);
+                        
+                    }
+                    else{
+                        this.toastr.error(res.message);
+                    }
+                 
+                  ;
+                }
+            );
     }
     
 }
