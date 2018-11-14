@@ -326,6 +326,7 @@ var DashboardComponent = /** @class */ (function () {
             type: 'warning',
             message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n                Voluptates est animi quibusdam praesentium quam, et perspiciatis,\n                consectetur velit culpa molestias dignissimos\n                voluptatum veritatis quod aliquam! Rerum placeat necessitatibus, vitae dolorum"
         });
+        console.log(localStorage.getItem('nomAdmin'));
     }
     DashboardComponent.prototype.ngOnInit = function () { };
     DashboardComponent.prototype.closeAlert = function (alert) {

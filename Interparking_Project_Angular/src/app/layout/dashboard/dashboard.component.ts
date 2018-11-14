@@ -49,7 +49,9 @@ export class DashboardComponent implements OnInit {
                 consectetur velit culpa molestias dignissimos
                 voluptatum veritatis quod aliquam! Rerum placeat necessitatibus, vitae dolorum`
             }
+          
         );
+        console.log(localStorage.getItem('nomAdmin'));
     }
 
     ngOnInit() {}

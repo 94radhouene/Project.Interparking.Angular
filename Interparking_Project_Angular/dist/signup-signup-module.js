@@ -32,7 +32,8 @@ var RegisterAdminService = /** @class */ (function () {
     }
     // Add Admin
     RegisterAdminService.prototype.addAdmin = function (admin) {
-        return this.http.post('http://interparkingauthentification.azurewebsites.net/api/Admin/ManageAdmin?staticToken=' + this.staticToken, admin);
+        this.o = this.http.post('http://authentificationinterparking.azurewebsites.net/api/Admin/ManageAdmin?staticToken=' + this.staticToken, admin);
+        return this.o;
     };
     RegisterAdminService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -126,6 +127,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _router_animations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../router.animations */ "./src/app/router.animations.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _services_register_admin_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./services/register-admin.service */ "./src/app/signup/services/register-admin.service.ts");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -139,11 +142,15 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
 var SignupComponent = /** @class */ (function () {
     // Initialize the form
-    function SignupComponent(formBuilder, dataService) {
+    function SignupComponent(formBuilder, dataService, toastr, router) {
         this.formBuilder = formBuilder;
         this.dataService = dataService;
+        this.toastr = toastr;
+        this.router = router;
         this.submitted = false;
         this.admin = {
             nomAdmin: '',
@@ -168,14 +175,23 @@ var SignupComponent = /** @class */ (function () {
     });
     // submit forms
     SignupComponent.prototype.onSubmit = function () {
+        var _this = this;
         this.submitted = true;
         // stop here if form is invalid
         if (this.registerForm.invalid) {
             return;
         }
         else {
-            this.dataService.addAdmin(this.admin).subscribe(function (admin) {
-                console.log(admin);
+            this.dataService.addAdmin(this.admin).subscribe(function (res) {
+                // Condition 0 : success
+                if (res.status == 0) {
+                    _this.toastr.success('Hello!', 'In Interparking!');
+                    _this.router.navigate(['/login']);
+                }
+                else {
+                    _this.toastr.error(res.message);
+                }
+                ;
             });
         }
     };
@@ -186,7 +202,10 @@ var SignupComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./signup.component.scss */ "./src/app/signup/signup.component.scss")],
             animations: [Object(_router_animations__WEBPACK_IMPORTED_MODULE_1__["routerTransition"])()]
         }),
-        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _services_register_admin_service__WEBPACK_IMPORTED_MODULE_3__["RegisterAdminService"]])
+        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"],
+            _services_register_admin_service__WEBPACK_IMPORTED_MODULE_3__["RegisterAdminService"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
     ], SignupComponent);
     return SignupComponent;
 }());

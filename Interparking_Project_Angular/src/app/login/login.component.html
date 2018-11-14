@@ -2,20 +2,29 @@
     <div class="row justify-content-md-center">
         <div class="col-md-4">
             <img src="assets/images/logo.png" width="150px" class="user-avatar" />
-            <h1>SB Admin BS4 Angular5</h1>
-            <form role="form">
+            <h1>Connect To Interparking</h1>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div class="form-content">
                     <div class="form-group">
-                        <input type="text" ng-model="name" class="form-control input-underline input-lg" id="" placeholder="Email">
+                                <input type="text" formControlName="nomAdmin" Placeholder="Name" class="form-control input-underline input-lg" 
+                                [ngClass]="{ 'is-invalid': submitted && f.nomAdmin.errors }" [(ngModel)]='admin.nomAdmin' />
+                                <div *ngIf="submitted && f.nomAdmin.errors" class="invalid-feedback">
+                                    <div *ngIf="f.nomAdmin.errors.required">Name is required</div>
+                                </div>
                     </div>
 
                     <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Password">
+                                <input type="text" formControlName="password" Placeholder="Password" class="form-control input-underline input-lg" 
+                                [ngClass]="{ 'is-invalid': submitted && f.password.errors }" [(ngModel)]='admin.password' />
+                                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                    <div *ngIf="f.password.errors.required">Password is required</div>
+                                </div>
+                    </div>
+                    <div class="form-group">
+                            <button [disabled]="loading" class="btn rounded-btn" > Log in </button>&nbsp; 
+                            <button [disabled]="loading" class="btn rounded-btn" [routerLink]="['/signup']">Register</button>  
                     </div>
                 </div>
-                <a class="btn rounded-btn" [routerLink]="['/dashboard']" (click)="onLoggedin()"> Log in </a>
-                &nbsp;
-                <a class="btn rounded-btn" [routerLink]="['/signup']">Register</a>
             </form>
         </div>
     </div>

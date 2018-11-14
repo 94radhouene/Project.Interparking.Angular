@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 
-export class RegisterAdminService {
+export class LoginService {
 
   // Variable
   staticToken = "D0F0F42C-8716-4B53-B245-2ECC6BD762C9";
@@ -15,8 +15,8 @@ export class RegisterAdminService {
   constructor(private http: HttpClient) {}
   
   // Add Admin
-  addAdmin(admin) {
-    this.o =  this.http.post<any>('http://authentificationinterparking.azurewebsites.net/api/Admin/ManageAdmin?staticToken=' + this.staticToken , admin);
+  loginadmin(admin) {
+    this.o =  this.http.post<any>('http://authentificationinterparking.azurewebsites.net/api/SignInAdmin?staticToken=' + this.staticToken , admin);
     return this.o;
   }
 }
