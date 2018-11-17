@@ -289,6 +289,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardComponent", function() { return DashboardComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _router_animations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../router.animations */ "./src/app/router.animations.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -300,10 +301,13 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var DashboardComponent = /** @class */ (function () {
-    function DashboardComponent() {
+    function DashboardComponent(router) {
+        this.router = router;
         this.alerts = [];
         this.sliders = [];
+        this.test = localStorage.getItem('nom');
         this.sliders.push({
             imagePath: 'assets/images/slider1.jpg',
             label: 'First slide label',
@@ -326,7 +330,11 @@ var DashboardComponent = /** @class */ (function () {
             type: 'warning',
             message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n                Voluptates est animi quibusdam praesentium quam, et perspiciatis,\n                consectetur velit culpa molestias dignissimos\n                voluptatum veritatis quod aliquam! Rerum placeat necessitatibus, vitae dolorum"
         });
-        console.log(localStorage.getItem('nomAdmin'));
+        if (this.test === null) {
+            this.router.navigate(['/login']);
+        }
+        console.log(this.test);
+        console.log('test test');
     }
     DashboardComponent.prototype.ngOnInit = function () { };
     DashboardComponent.prototype.closeAlert = function (alert) {
@@ -340,7 +348,7 @@ var DashboardComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./dashboard.component.scss */ "./src/app/layout/dashboard/dashboard.component.scss")],
             animations: [Object(_router_animations__WEBPACK_IMPORTED_MODULE_1__["routerTransition"])()]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], DashboardComponent);
     return DashboardComponent;
 }());

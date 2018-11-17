@@ -25,7 +25,9 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, 
               public dataService:LoginService, 
               private toastr: ToastrService,
-              private router: Router) { }
+              private router: Router) { 
+                localStorage.removeItem('nom');
+              }
   // Form validate
   ngOnInit() {
       this.loginForm = this.formBuilder.group({
@@ -52,15 +54,14 @@ export class LoginComponent implements OnInit {
                   if(res.status == 0){
                      // this.router.navigate(['/dashboard']);
                         //this.authService.authLogin(this.model);
-                    localStorage.setItem('isLoggedIn', "true");
-                    localStorage.setItem('nomAdmin', this.admin.nomAdmin);
+                    localStorage.removeItem('nom');
+                    localStorage.setItem('nom', this.admin.nomAdmin);
                     console.log('success');
-                    console.log(localStorage.getItem('nomAdmin'));
+                    console.log(localStorage.getItem('nom'));
                     this.router.navigate(['/dashboard']);
-                    console.log(localStorage.getItem('nomAdmin'));
                   }
                   else{
-                      this.toastr.error(res.message);
+                    this.toastr.error(res.message);
                   }
                
                 ;

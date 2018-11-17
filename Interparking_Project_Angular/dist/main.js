@@ -8,6 +8,11 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"./Client/client.module": [
+		"./src/app/layout/Client/client.module.ts",
+		"common",
+		"Client-client-module"
+	],
 	"./access-denied/access-denied.module": [
 		"./src/app/access-denied/access-denied.module.ts",
 		"access-denied-access-denied-module"
@@ -114,7 +119,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppRoutingModule", function() { return AppRoutingModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _shared__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./shared */ "./src/app/shared/index.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -123,9 +127,8 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 
 
-
 var routes = [
-    { path: '', loadChildren: './layout/layout.module#LayoutModule', canActivate: [_shared__WEBPACK_IMPORTED_MODULE_2__["AuthGuard"]] },
+    { path: '', loadChildren: './layout/layout.module#LayoutModule' },
     { path: 'login', loadChildren: './login/login.module#LoginModule' },
     { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },
     { path: 'error', loadChildren: './server-error/server-error.module#ServerErrorModule' },

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-dashboard',
@@ -10,8 +11,9 @@ import { routerTransition } from '../../router.animations';
 export class DashboardComponent implements OnInit {
     public alerts: Array<any> = [];
     public sliders: Array<any> = [];
+    test = localStorage.getItem('nom');
 
-    constructor() {
+    constructor(private router: Router) {
         this.sliders.push(
             {
                 imagePath: 'assets/images/slider1.jpg',
@@ -51,7 +53,12 @@ export class DashboardComponent implements OnInit {
             }
           
         );
-        console.log(localStorage.getItem('nomAdmin'));
+        if( this.test === null){
+            this.router.navigate(['/login']);
+        }
+        console.log(this.test);
+        console.log('test test');
+       
     }
 
     ngOnInit() {}

@@ -109,6 +109,7 @@ var LoginComponent = /** @class */ (function () {
             nomAdmin: '',
             password: '',
         };
+        localStorage.removeItem('nom');
     }
     // Form validate
     LoginComponent.prototype.ngOnInit = function () {
@@ -137,12 +138,11 @@ var LoginComponent = /** @class */ (function () {
                 if (res.status == 0) {
                     // this.router.navigate(['/dashboard']);
                     //this.authService.authLogin(this.model);
-                    localStorage.setItem('isLoggedIn', "true");
-                    localStorage.setItem('nomAdmin', _this.admin.nomAdmin);
+                    localStorage.removeItem('nom');
+                    localStorage.setItem('nom', _this.admin.nomAdmin);
                     console.log('success');
-                    console.log(localStorage.getItem('nomAdmin'));
+                    console.log(localStorage.getItem('nom'));
                     _this.router.navigate(['/dashboard']);
-                    console.log(localStorage.getItem('nomAdmin'));
                 }
                 else {
                     _this.toastr.error(res.message);
