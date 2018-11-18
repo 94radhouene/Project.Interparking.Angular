@@ -16,21 +16,22 @@ export class DashboardComponent implements OnInit {
     constructor(private router: Router) {
         this.sliders.push(
             {
-                imagePath: 'assets/images/slider1.jpg',
-                label: 'First slide label',
+                imagePath: 'assets/images/park1.png',
+                label: 'Welcome To Interparking',
                 text:
-                    'Nulla vitae elit libero, a pharetra augue mollis interdum.'
+                    'This is one of the largest parking'
             },
             {
-                imagePath: 'assets/images/slider2.jpg',
-                label: 'Second slide label',
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+                imagePath: 'assets/images/park2.png',
+                label: 'Organization',
+                text:
+                    'We have parking in all europe'
+                
             },
             {
-                imagePath: 'assets/images/slider3.jpg',
-                label: 'Third slide label',
-                text:
-                    'Praesent commodo cursus magna, vel scelerisque nisl consectetur.'
+                imagePath: 'assets/images/park3.png',
+                label: 'Every Where',
+                    text: 'In the life of interparking we respect the organization'
             }
         );
 
@@ -38,18 +39,14 @@ export class DashboardComponent implements OnInit {
             {
                 id: 1,
                 type: 'success',
-                message: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Voluptates est animi quibusdam praesentium quam, et perspiciatis,
-                consectetur velit culpa molestias dignissimos
-                voluptatum veritatis quod aliquam! Rerum placeat necessitatibus, vitae dolorum`
+                message: `Welcome To Interparking Admin Application , you have the right to follow the
+                data and progress of interparking`
             },
             {
                 id: 2,
                 type: 'warning',
-                message: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Voluptates est animi quibusdam praesentium quam, et perspiciatis,
-                consectetur velit culpa molestias dignissimos
-                voluptatum veritatis quod aliquam! Rerum placeat necessitatibus, vitae dolorum`
+                message: `Be careful the are a critical data in this application so you have to take time before 
+                delete or update data`
             }
           
         );
