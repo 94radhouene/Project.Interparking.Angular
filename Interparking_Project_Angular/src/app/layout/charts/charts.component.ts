@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import { ChartsService } from './services/charts.service';
 
 @Component({
     selector: 'app-charts',
@@ -8,6 +9,21 @@ import { routerTransition } from '../../router.animations';
     animations: [routerTransition()]
 })
 export class ChartsComponent implements OnInit {
+
+    // List Booking
+   bookings:Array<{idBooking: number, 
+                   nbrHour: number,
+                   dateBooking : string,
+                   name : string, 
+                   idParking : number, 
+                   isActive : boolean,
+                bill : Array<any>}>;
+    listBokking : any;
+    // Varible doughnutChart
+    varless2 : number = 0 ;
+    varbet210 : number = 0;
+    varmor10 : number = 0 ;
+
     // bar chart
     public barChartOptions: any = {
         scaleShowVerticalLines: false,
@@ -32,11 +48,12 @@ export class ChartsComponent implements OnInit {
 
     // Doughnut
     public doughnutChartLabels: string[] = [
-        'Download Sales',
-        'In-Store Sales',
-        'Mail-Order Sales'
+        'Less than 2 hour',
+        'Between 2 and 10 hours',
+        'More than 10 hours'
     ];
-    public doughnutChartData: number[] = [350, 450, 100];
+
+    public doughnutChartData: number[] = [0,0,0] ;
     public doughnutChartType: string = 'doughnut';
 
     // Radar
@@ -158,7 +175,39 @@ export class ChartsComponent implements OnInit {
          */
     }
 
-    constructor() {}
+    constructor(public dataService:ChartsService) {
+         // List listBokking
+         this.dataService.listReservation().subscribe(
+            res => {
+              this.bookings = res.data;
+              res.data.forEach(element => {
+                if(element.nbrHour <= 2)
+                {
+                    this.varless2 ++;
+                }
+                else if(element.nbrHour > 2 && element.nbrHour <= 10)
+                {
+                    this.varbet210 ++;
+                }
+                else
+                {
+                    this.varmor10 ++;
+                }
+    this.doughnutChartData = [this.varless2, this.varbet210, this.varmor10];
+                
+            }); 
+            console.log(this.varless2);
+    console.log(this.varbet210);
+    console.log(this.varmor10);
+            }
+            );
+            /* this.onFilldoughnutChart(); */
+             
+    }
 
-    ngOnInit() {}
+    ngOnInit() {
+       
+
+           
+    }
 }
