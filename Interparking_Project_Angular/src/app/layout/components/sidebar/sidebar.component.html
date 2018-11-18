@@ -16,6 +16,14 @@
             <i class="fa fa-fw fa-table"></i>&nbsp;
             <span>{{ 'Client' | translate }}</span>
         </a>
+        <a [routerLink]="['/admin']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-table"></i>&nbsp;
+            <span>{{ 'Admin' | translate }}</span>
+        </a>
+        <a [routerLink]="['/map']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-table"></i>&nbsp;
+            <span>{{ 'Map' | translate }}</span>
+        </a>
         <a [routerLink]="['/forms']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-edit"></i>&nbsp;
             <span>{{ 'Forms' | translate }}</span>

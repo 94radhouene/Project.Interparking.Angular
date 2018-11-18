@@ -1,0 +1,24 @@
+<div [@routerTransition]></div>
+<table class="table table-bordered">
+  <thead>
+  <tr>
+      <td>ID</td>
+      <td>Name</td>
+      <td>Password</td>
+      <td>Work</td>
+      <td>isSuper</td>
+  </tr>
+  </thead>
+
+  <tbody>
+      <tr *ngFor="let admin of admins">
+          <td>{{ admin.idAdmin }}</td>
+          <td>{{ admin.nomAdmin }}</td>
+          <td>{{ admin.password }}</td>
+          <td>{{ admin.workInterparking }}</td>
+          <td>{{ admin.isSuper }}</td>
+          <td><a [routerLink]="" class="btn btn-warning">Edit</a></td>
+          <td><button (click)="deleteClient(admin.idAdmin)" class="btn btn-danger">Delete</button></td>
+      </tr>
+  </tbody>
+</table>

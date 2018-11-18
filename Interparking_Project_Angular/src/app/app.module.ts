@@ -6,10 +6,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ToastrModule } from 'ngx-toastr';
+import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
+import { AgGridModule } from 'ag-grid-angular';
+import { AgmCoreModule } from '@agm/core';
 
 // AoT requires an exported function for factories
 export const createTranslateLoader = (http: HttpClient) => {
@@ -28,6 +31,10 @@ export const createTranslateLoader = (http: HttpClient) => {
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
+        AgGridModule.withComponents(null),
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyCncqFzv1UJtrzADsvb71LU7Xgb36ezWrk'
+          }),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -36,6 +43,7 @@ export const createTranslateLoader = (http: HttpClient) => {
             }
         }),
         AppRoutingModule,
+        SlimLoadingBarModule,
         ToastrModule.forRoot()
     ],
     declarations: [AppComponent],

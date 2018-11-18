@@ -1,5 +1,31 @@
 <div [@routerTransition]>
-    
-<p>
-  client works!
-</p>
+
+    <table class="table table-bordered">
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>UserName</td>
+                <td>Password</td>
+                <td>Email</td>
+                <td>Facebook</td>
+                <td>FullName</td>
+                <td>Adress</td>
+                <td>Phone</td>
+            </tr>
+            </thead>
+          
+            <tbody>
+                <tr *ngFor="let admin of admins">
+                    <td>{{ admin.iduser }}</td>
+                    <td>{{ admin.userName }}</td>
+                    <td>{{ admin.password }}</td>
+                    <td>{{ admin.email }}</td>
+                    <td>{{ admin.isFacebook }}</td>
+                    <td>{{ admin.fullName }}</td>
+                    <td>{{ admin.adress }}</td>
+                    <td>{{ admin.tel }}</td>
+                    <td><a [routerLink]="" class="btn btn-warning">Edit</a></td>
+                    <td><button (click)="deleteClient(admin.userName)" class="btn btn-danger">Delete</button></td>
+                </tr>
+            </tbody>
+          </table>
