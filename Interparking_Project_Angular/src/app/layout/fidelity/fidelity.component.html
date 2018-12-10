@@ -1,0 +1,21 @@
+<div [@routerTransition]>
+
+  <table class="table table-bordered">
+          <thead>
+          <tr>
+              <td>ID</td>
+              <td>price</td>
+              <td>Id Parking</td>
+          </tr>
+          </thead>
+        
+          <tbody>
+              <tr *ngFor="let fidelity of fidelitys">
+                  <td>{{ fidelity.idFidelety }}</td>
+                  <td>{{ fidelity.price }}</td>
+                  <td>{{ fidelity.idParking }}</td>
+                  <td><a [routerLink]="" class="btn btn-warning">Edit</a></td>
+                  <td><button (click)="deleteFidelity(fidelity.idFidelety)" class="btn btn-danger">Delete</button></td>
+              </tr>
+          </tbody>
+        </table>

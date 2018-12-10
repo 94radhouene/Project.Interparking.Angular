@@ -17,7 +17,7 @@ export class MapComponent implements OnInit {
    lonField : number}>;
 
    // Initialize varible
-   title: string = 'My first AGM project';
+   title: string = 'Interparking Locations';
    maps:any;
   
 

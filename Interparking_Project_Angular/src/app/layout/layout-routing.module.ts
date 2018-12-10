@@ -18,7 +18,9 @@ const routes: Routes = [
             { path: 'blank-page', loadChildren: './blank-page/blank-page.module#BlankPageModule' },
             { path: 'client', loadChildren: './Client/client.module#ClientModule' },
             { path: 'admin', loadChildren: './Admin/admin.module#AdminModule' },
-            { path: 'map', loadChildren: './map/map.module#MapModule' }
+            { path: 'map', loadChildren: './map/map.module#MapModule' },
+            { path: 'fidelity', loadChildren: './fidelity/fidelity.module#FidelityModule' },
+            { path: 'bill', loadChildren: './bill/bill.module#BillModule' }
         ]
     }
 ];

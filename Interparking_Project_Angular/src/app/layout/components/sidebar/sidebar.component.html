@@ -24,6 +24,15 @@
             <i class="fa fa-fw fa-table"></i>&nbsp;
             <span>{{ 'Map' | translate }}</span>
         </a>
+        <a [routerLink]="['/bill']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-table"></i>&nbsp;
+            <span>{{ 'Bill' }}</span>
+        </a>
+        <a [routerLink]="['/fidelity']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-table"></i>&nbsp;
+            <span>{{ 'Fidelity' }}</span>
+        </a>
+     
        <!--  <a [routerLink]="['/forms']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-edit"></i>&nbsp;
             <span>{{ 'Forms' | translate }}</span>

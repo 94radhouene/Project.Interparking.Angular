@@ -1,0 +1,32 @@
+<div [@routerTransition]>
+
+  <table class="table table-bordered">
+          <thead>
+          <tr>
+              <td>ID</td>
+              <td>Price</td>
+              <td>Hour Number</td>
+              <td>IdBooking</td>
+              <td>Date Bill</td>
+              <td>Payed</td>
+              <td>Date booking</td>
+              <td>Name</td>
+              <td>Id Parking</td>
+          </tr>
+          </thead>
+        
+          <tbody>
+              <tr *ngFor="let bill of bills">
+                  <td>{{ bill.idBill }}</td>
+                  <td>{{ bill.price }}</td>
+                  <td>{{ bill.nbrHour }}</td>
+                  <td>{{ bill.idBooking }}</td>
+                  <td>{{ bill.dateBill }}</td>
+                  <td>{{ bill.payed }}</td>
+                  <td>{{ bill.idBookingNavigation.dateBooking }}</td>
+                  <td>{{ bill.idBookingNavigation.name }}</td>
+                  <td>{{ bill.idBookingNavigation.idParking }}</td>
+                  <td><a [routerLink]="" class="btn btn-warning">Edit</a></td>
+              </tr>
+          </tbody>
+        </table>
